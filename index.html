@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lutetia EVM Decompiler | decompiler.dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1 class="logo">Lutetia</h1>
+      <span class="tagline">EVM Decompiler</span>
+    </header>
+
+    <main class="main">
+      <section class="input-section card">
+        <h2>Bytecode source</h2>
+        <div class="tabs">
+          <button type="button" class="tab active" data-tab="address">Contract address</button>
+          <button type="button" class="tab" data-tab="paste">Paste bytecode</button>
+        </div>
+
+        <div id="panel-address" class="panel active">
+          <div class="row">
+            <label for="contract-address">Contract address</label>
+            <input id="contract-address" type="text" placeholder="0x..." class="mono" spellcheck="false">
+          </div>
+          <div class="row">
+            <label for="chain">Chain</label>
+            <select id="chain">
+              <option value="1">Ethereum</option>
+              <option value="56">BNB Smart Chain</option>
+              <option value="137">Polygon</option>
+              <option value="8453">Base</option>
+              <option value="42161">Arbitrum One</option>
+              <option value="10">OP Mainnet</option>
+              <option value="43114">Avalanche C-Chain</option>
+              <option value="100">Gnosis</option>
+              <option value="534352">Scroll</option>
+              <option value="59144">Linea</option>
+              <option value="81457">Blast</option>
+              <option value="204">opBNB</option>
+              <option value="5000">Mantle</option>
+              <option value="1284">Moonbeam</option>
+              <option value="1285">Moonriver</option>
+              <option value="42220">Celo</option>
+              <option value="252">Fraxtal</option>
+              <option value="199">BitTorrent Chain</option>
+              <option value="167000">Taiko</option>
+              <option value="50">XDC</option>
+              <option value="33139">ApeChain</option>
+              <option value="146">Sonic</option>
+              <option value="80094">Berachain</option>
+              <option value="11155111">Sepolia</option>
+              <option value="84532">Base Sepolia</option>
+              <option value="421614">Arbitrum Sepolia</option>
+              <option value="80002">Polygon Amoy</option>
+            </select>
+          </div>
+          <div class="row optional">
+            <label for="etherscan-apikey">Etherscan API key (optional)</label>
+            <input id="etherscan-apikey" type="password" placeholder="For higher rate limits" class="mono">
+          </div>
+        </div>
+
+        <div id="panel-paste" class="panel">
+          <div class="row">
+            <label for="bytecode-paste">Bytecode (hex, with or without 0x)</label>
+            <textarea id="bytecode-paste" class="mono" rows="6" placeholder="602a60005500 or 0x602a60005500..." spellcheck="false"></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="btn-decompile" class="btn-primary">Decompile</button>
+          <span id="status" class="status"></span>
+        </div>
+      </section>
+
+      <section id="output-section" class="output-section card hidden">
+        <div class="output-header">
+          <h2>Decompiled output</h2>
+          <button type="button" id="btn-copy" class="btn-secondary">Copy</button>
+        </div>
+        <div class="output-wrapper">
+          <pre><code id="output-code" class="language-python"></code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="https://github.com/jose-blockchain/lutetia/issues" target="_blank" rel="noopener">Report issues or request features</a>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
