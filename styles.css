@@ -295,14 +295,32 @@ textarea {
   margin-top: auto;
   padding-top: 2rem;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0 0.5rem;
 }
 
 .footer a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .footer a:hover {
   color: var(--accent);
+}
+
+.footer-link .icon-star {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.footer-sep {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
