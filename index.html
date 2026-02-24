@@ -27,7 +27,25 @@
 
     <main class="main">
       <section class="input-section card">
-        <h2>Bytecode source</h2>
+        <div class="section-header">
+          <h2>Bytecode source</h2>
+          <button type="button" id="btn-docs" class="btn-docs" title="How Lutetia works">Docs</button>
+        </div>
+        <div id="docs-modal" class="modal" role="dialog" aria-labelledby="docs-modal-title" aria-hidden="true">
+          <div class="modal-overlay" id="docs-modal-overlay"></div>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="docs-modal-title">Trace-based vs function-extraction decompilation</h3>
+              <button type="button" id="docs-modal-close" class="modal-close" aria-label="Close">×</button>
+            </div>
+            <div class="modal-body">
+              <p>Lutetia uses a <strong>trace-based</strong> approach, not function extraction. You may see fewer named functions than in tools like Ethervm; the logic is still there, just inlined.</p>
+              <p><strong>Ethervm-style (function extraction):</strong> The decompiler finds internal jump targets (e.g. <code>func_0899</code>, <code>func_08FE</code>) and prints them as separate <code>function func_XXXX(...)</code> with <code>memory[]</code> / <code>var</code> / <code>goto</code>. The main code then looks like calls to those helpers, so you get many small, named functions.</p>
+              <p><strong>Lutetia (trace-based):</strong> It follows execution from the entry point and builds one (or a few) linear traces. The same logic is <strong>inlined</strong> in that trace: those checks become <code>require</code> / <code>revert with</code>, lookups become conditionals (<code>if not _69001: ... elif _69001 == 1: ...</code>), and helper-style logic appears where it is used. You get one main <code>def fallback():</code> (and possibly other entry points) with everything inlined.</p>
+              <p><strong>Summary:</strong> Lutetia does not omit behavior; it does not extract it as separate functions. Ethervm shows “more functions” because it lists every such block as a function. Lutetia shows one (or few) large function(s) with the same behavior inlined. Trade-off: many small functions can clarify “which helper does what”; one inlined trace can make the main flow easier to follow without jumping between definitions.</p>
+            </div>
+          </div>
+        </div>
         <div class="tabs">
           <button type="button" class="tab" data-tab="address">Contract address</button>
           <button type="button" class="tab active" data-tab="paste">Paste bytecode</button>
