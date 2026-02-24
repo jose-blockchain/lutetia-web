@@ -320,6 +320,11 @@ textarea {
   vertical-align: middle;
 }
 
+.footer-version {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
 .footer-sep {
   color: var(--text-muted);
   font-size: 0.9rem;
