@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lutetia EVM Decompiler</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="favicon.svg">
   <script>
     (function () {
       var m = location.pathname.match(/^(.*\/lutetia-web)\/?/);
@@ -111,6 +113,22 @@
           <button type="button" id="btn-decompile" class="btn-primary">Decompile</button>
           <span id="status" class="status"></span>
         </div>
+        <div id="progress-wrap" class="progress-wrap hidden" aria-live="polite">
+          <div class="progress-meta">
+            <span id="progress-label">Decompiling…</span>
+            <span id="progress-eta"></span>
+          </div>
+          <div
+            id="progress-track"
+            class="progress-track"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
       </section>
 
       <section id="output-section" class="output-section card hidden">
@@ -125,7 +143,7 @@
     </main>
 
     <footer class="footer">
-      <span class="footer-version" title="Decompiler version">v0.2.1</span>
+      <span class="footer-version" title="Decompiler version">v0.2.2</span>
       <span class="footer-sep">·</span>
       <a href="https://github.com/jose-blockchain/lutetia" target="_blank" rel="noopener" class="footer-link footer-star" aria-label="Star on GitHub">
         <svg class="icon-star" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
